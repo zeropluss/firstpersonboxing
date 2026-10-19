@@ -1,11 +1,14 @@
 import {month} from './seo';
-export const pages:Record<string,{title:string;h1:string;description:string;index:boolean;verifiedAt:string|null;updatedAt:string}>={
-codes:{title:`First Person Boxing Codes (${month()})`,h1:'First Person Boxing Codes',description:'Check First Person Boxing code verification status, source requirements and redemption coverage. No invented rewards or untested codes.',index:false,verifiedAt:null,updatedAt:'2026-10-19'},
-styles:{title:'First Person Boxing: All Styles Ranked',h1:'All Fighting Styles in First Person Boxing',description:'First Person Boxing style coverage, source-backed statistics and acquisition notes. Unknown values are explicitly left unverified.',index:false,verifiedAt:null,updatedAt:'2026-10-19'},
-'tier-list':{title:`First Person Boxing Tier List (${month()})`,h1:'First Person Boxing Tier List',description:'Transparent ranking criteria for First Person Boxing: damage, speed and stamina efficiency. Rankings await verified match evidence.',index:false,verifiedAt:null,updatedAt:'2026-10-19'},
-controls:{title:'First Person Boxing Controls (PC, Mobile, Console)',h1:'First Person Boxing Controls',description:'PC, mobile and console control coverage plus developer-confirmed slip, guard, counter and stamina mechanics.',index:false,verifiedAt:null,updatedAt:'2026-10-19'},
-combos:{title:'First Person Boxing Combos & Counter Guide',h1:'Combos and Counters',description:'First Person Boxing opening, counter and finisher combo evidence. Only reproducible inputs belong in the combo library.',index:false,verifiedAt:null,updatedAt:'2026-10-19'},
-guide:{title:'First Person Boxing Guide: How to Play',h1:'First Person Boxing Beginner Guide',description:'An editorial first-session practice plan based on officially described AI practice, guards, slips, counters and stamina.',index:true,verifiedAt:'2026-10-19',updatedAt:'2026-10-19'},
-discord:{title:'First Person Boxing Discord & Official Links',h1:'Official Discord and Links',description:'The verified First Person Boxing Roblox experience and developer community, with honest status for Discord and social links.',index:true,verifiedAt:'2026-10-19',updatedAt:'2026-10-19'},
-updates:{title:'First Person Boxing Update Log & Patch Notes',h1:'Update Log',description:'A source ledger for First Person Boxing and a separate website change log. No inferred patch notes or fabricated game changes.',index:true,verifiedAt:'2026-10-19',updatedAt:'2026-10-19'}
+const entry=(title:string,h1:string,description:string,index=true)=>({title,h1,description,index,verifiedAt:'2026-10-19',updatedAt:'2026-10-19'});
+export const pages:Record<string,ReturnType<typeof entry>>={
+codes:entry(`First Person Boxing Codes (${month()})`,'First Person Boxing Codes','Reported code strings, rewards, redemption instructions and clear third-party verification status.'),
+styles:entry('First Person Boxing Playstyles & Fighting Approach','Find your fighting approach','Choose an editorial counter-focused, pressure or observation-led approach without invented style statistics.'),
+ 'tier-list':entry('First Person Boxing Training Priorities','What should you practice first?','An editorial learning order covering controls, defense, fatigue and counters. No unsupported style rankings.',false),
+controls:entry('First Person Boxing Controls & Platform Setup','Controls & platform setup','Prepare for PC, mobile or console and understand attacks, slips, guards, counters and stamina.'),
+combos:entry('First Person Boxing Counters & Exchange Guide','Build a better exchange','Learn an editorial observe, defend, respond and reset routine based on developer-described mechanics.'),
+defense:entry('First Person Boxing Guards, Slips & Stamina','Defense wins the next exchange','Understand head and body guards, slip practice and the officially described fatigue slowdown.'),
+knockouts:entry('First Person Boxing Knockdowns & Replay Guide','Learn from the final exchange','Use cinematic knockdowns and replays to choose an observable practice goal.'),
+guide:entry('First Person Boxing Beginner Guide: How to Play','Your first rounds, with a plan','Start with AI practice, platform preparation and a saved checklist for your next practice session.'),
+discord:entry('First Person Boxing Discord & Official Links','Find the right corner','Official Roblox experience and creator community with an attributed third-party Discord invitation.'),
+updates:entry('First Person Boxing Source Reviews & Site Updates','The ringside notebook','Separate description reviews, website changes and developer announcement sources.')
 };
