@@ -1,0 +1,14 @@
+import {codes} from '../lib/content';
+const now=new Date();
+const today=now.toISOString().slice(0,10);
+const age=(date:string)=>Math.floor((Date.parse(today)-Date.parse(date))/86400000);
+console.log(`# Code verification reminder — ${today}\n`);
+console.log('## 今天需要复核的条目 / Needs review');
+for(const lead of codes.leads)console.log(`- Community lead: ${lead.code} | ${lead.status} | ${lead.sourceUrl} | needs official or in-game confirmation`);
+const review=codes.codes.filter(c=>c.status==='unverified'||c.status==='working'&&(age(c.addedAt)>14||age(c.verifiedAt)>=1));
+console.log(review.length?review.map(c=>`- ${c.code} | ${c.status} | added ${c.addedAt} | verified ${c.verifiedAt} | ${c.sourceUrl}`).join('\n'):'No entries due. Empty data does not mean there are no game codes.');
+console.log('\n## 已过期超过 30 天、可以归档的条目 / Archive candidates');
+const archive=codes.codes.filter(c=>c.status==='expired'&&c.expiredAt&&age(c.expiredAt)>30);
+console.log(archive.length?archive.map(c=>`- ${c.code} | expired ${c.expiredAt}`).join('\n'):'None.');
+const missing=codes.codes.filter(c=>c.status==='expired'&&!c.expiredAt);
+if(missing.length)console.log('\nMissing expiry date; cannot assess archiving:',missing.map(c=>c.code).join(', '));

@@ -1,0 +1,8 @@
+import type { Metadata } from 'next';
+export const siteUrl='https://firstpersonboxing.org';
+export const month=()=>new Intl.DateTimeFormat('en-US',{month:'long',year:'numeric',timeZone:'Asia/Shanghai'}).format(new Date());
+export function buildMetadata({title,description,path='/',ogImage='/og.svg',index=true}:{title:string;description:string;path?:string;ogImage?:string;index?:boolean}):Metadata { const url=new URL(path,siteUrl).href;return {title,description,alternates:{canonical:url},robots:{index,follow:true},openGraph:{title,description,url,siteName:'First Person Boxing Field Manual',type:'website',images:[new URL(ogImage,siteUrl).href]},twitter:{card:'summary_large_image',title,description,images:[new URL(ogImage,siteUrl).href]}}; }
+export const breadcrumb=(items:{name:string;path:string}[])=>({'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:items.map((x,i)=>({'@type':'ListItem',position:i+1,name:x.name,item:new URL(x.path,siteUrl).href}))});
+export const faq=(items:{q:string;a:string}[])=>({'@context':'https://schema.org','@type':'FAQPage',mainEntity:items.map(x=>({'@type':'Question',name:x.q,acceptedAnswer:{'@type':'Answer',text:x.a}}))});
+export const itemList=(items:{name:string}[])=>({'@context':'https://schema.org','@type':'ItemList',itemListElement:items.map((x,i)=>({'@type':'ListItem',position:i+1,name:x.name}))});
+export const videoGame=(game:{name:string;url:string;developer:string})=>({'@context':'https://schema.org','@type':'VideoGame',name:game.name,url:game.url,applicationCategory:'Game',operatingSystem:'PC, Mobile, Console',author:{'@type':'Organization',name:game.developer}});

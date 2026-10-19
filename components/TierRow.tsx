@@ -1,0 +1,2 @@
+import type {Style} from '@/lib/content';
+export default function TierRow({tier,rows}:{tier:string;rows:Style[]}){return <section className="tier"><h2>{tier}</h2><table><thead><tr><th>Style</th><th>Reason</th><th>Best for</th></tr></thead><tbody>{rows.length?rows.map(s=><tr key={s.name}><td>{s.name}</td><td>{s.reason}</td><td>{s.bestFor}</td></tr>):<tr><td colSpan={3}>Unranked — match evidence required.</td></tr>}</tbody></table></section>;}
